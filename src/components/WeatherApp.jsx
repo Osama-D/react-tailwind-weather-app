@@ -7,12 +7,14 @@ import { RiMistFill } from "react-icons/ri";
 import { BsSunriseFill } from "react-icons/bs";
 import { FaCloudSunRain } from "react-icons/fa";
 import { BsCloudSunFill } from "react-icons/bs";
+import { BsSnow } from "react-icons/bs";
 
 import clouds from "./images/clouds.jpg";
 import extreme from "./images/extreme.jpg";
 import rain from "./images/rain.jpg";
 import clearsky from "./images/clear sky.jpg";
 import Mist from "./images/Mist.jpg";
+import snow from "./images/snow.jpg";
 
 import Moment from "moment";
 
@@ -44,6 +46,7 @@ function WeatherApp() {
   function Clickedunit() {
     setunit(unit === "metric" ? "imperial" : "metric");
   }
+  console.log(weather);
   return (
     <>
       <div className="w-full tablet:absolute tablet:h-[129%] phone:h-[170%] bg-primary h-screen">
@@ -93,6 +96,14 @@ function WeatherApp() {
               <img
                 className=" object-cover tablet:opacity-50 opacity-50 w-full h-full"
                 src={Mist}
+                alt=""
+              />
+            );
+          } else if (!loading && weather.weather[0].main === "Snow") {
+            return (
+              <img
+                className=" object-cover tablet:opacity-50 opacity-50 w-full h-full"
+                src={snow}
                 alt=""
               />
             );
@@ -175,6 +186,10 @@ function WeatherApp() {
                   } else if (!loading && weather.weather[0].main === "Rain") {
                     return (
                       <FaCloudSunRain className="text-blue-500 absolute top-[34px] tablet:top-[33px] text-2xl block justify-center items-center " />
+                    );
+                  } else if (!loading && weather.weather[0].main === "Snow") {
+                    return (
+                      <BsSnow className="text-blue-200 absolute top-[34px] tablet:top-[33px] text-2xl block justify-center items-center " />
                     );
                   }
                 })()}
