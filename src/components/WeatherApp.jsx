@@ -23,8 +23,8 @@ function WeatherApp() {
   const [term, setTerm] = useState("");
   const [weather, setWeather] = useState("");
   const [unit, setunit] = useState("metric");
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${term}&units=${unit}&appid=${process.env.REACT_APP_API_KEY}`;
   const [loading, setisloading] = useState(true);
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${term}&units=${unit}&appid=${process.env.REACT_APP_API_KEY}`;
 
   function fetchdata() {
     axios.get(url).then((response) => {
@@ -112,10 +112,10 @@ function WeatherApp() {
       </div>
       <div className="grid text-white grid-cols-7 tablet:grid-cols-3     	  capitalize font-body h-[100%] w-[100%] left-0 top-0 fixed tablet:relative">
         <div className=" col-span-4 phone:justify-center phone:my-0 phone:mx-0 tablet:col-span-0 py-8 ">
-          <h1 className="px-[60px] tablet:flex tablet:flex-col mt-0 text-2xl">
+          <h1 className="flex justify-center sm:justify-start items-center sm:items-start sm:px-[60px] tablet:flex tablet:flex-col mt-0 text-2xl">
             The Weather
           </h1>
-          <div className="flex mb-10 gap-x-6 mt-4 items-center phone:justify-center phone:flex-wrap py-[550px] tablet:py-[0]  px-[60px]">
+          <div className="flex mb-10 gap-x-6 mt-10 items-center phone:justify-center phone:flex-wrap py-[550px] tablet:py-[0]  px-[60px]">
             <div className="cursor-pointer">
               {(() => {
                 if (unit === "metric" && weather.main) {
@@ -161,11 +161,11 @@ function WeatherApp() {
                     Cañada
                   </h2>
                 )}
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center text-center">
                   <h2>{madate}</h2>
                 </div>
               </div>
-              <div className="flex flex-col relative justify-center items-center pl-10 phone:pl-0 tablet:ml-8 phone:ml-0 ">
+              <div className="flex flex-col relative justify-center items-center pl-10 phone:pl-0 tablet:ml-8 phone:ml-0 text-center">
                 {(() => {
                   if (!loading && weather.weather[0].main === "Mist") {
                     return (
